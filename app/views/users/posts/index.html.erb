@@ -1,13 +1,13 @@
 <!-- 投稿一覧 ------------------------->
 <section class="container">
 	<div class="row">
-		<div class="col-8 offset-2">
-			<div class="row">
-				<div class="col-8">
-					<% @posts.each do |post| %>
-						<%= link_to users_post_path(post) do %>
+		<div class="col-10 offset-1 post_index">
+			<div class="post_index_content">
+				<% @posts.each do |post| %>
+					<%= link_to users_post_path(post) do %>
+						<div class="post_index_content_box">
 							<div class="post_image">
-									<%= attachment_image_tag post, :image, size: "300x200" %>
+									<%= attachment_image_tag post, :image, class: "post_image" %>
 							</div>
 							<div class="post_title">
 								<%= truncate(post.title, length: 30) %>
@@ -16,23 +16,29 @@
 								<%= truncate(post.body, length: 150) %>
 							</div>
 							<div class="post_user">
-								<%= post.user.name %>
+								<%= link_to users_user_path(post.user) do %>
+									<%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"rounded-circle", size: "30x30" %>
+									<span class="post_user_name"><%= post.user.name %></span>
+								<% end %>
 							</div>
+							<div class="post_create text-right">
+								<%= post.created_at.strftime("%Y年%m月%d日") %>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="post_index_category">
+				<h4 class="post_index_category_title">新着カテゴリー</h4>
+				<h6 class="post_index_category_more">もっと見る</h6>
+					<% @categories.each do |category| %>
+						<%= link_to "/users/category/#{category.id}" do %>
+							<span class="post_index_category_name"><%= category.name %>(<%= category.posts.count %>)</span>
 						<% end %>
 					<% end %>
-				</div>
+					<hr>
 			</div>
-			<div class="row">
-				<div class="col-4">
-					<h4>新着カテゴリー</h4>
-						<% @categories.each do |category| %>
-							<%= link_to "/customers/category/#{category.id}" do %>
-								<%= category.name %>(<%= category.posts.count %>)
-							<% end %>
-						<% end %>
-				</div>
-			</div>
-		</div>
+	</div>
 	</div>
 </section>
 

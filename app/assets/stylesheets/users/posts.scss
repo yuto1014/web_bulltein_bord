@@ -1,3 +1,85 @@
 // Place all the styles related to the users::posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//投稿一覧(uesrs/posts/index.html.erb)-----------------------------------------------------------------
+//投稿全体
+.post_index {
+	display: flex;
+}
+//投稿
+.post_index_content {
+	max-width: 100%;
+	margin-right: 15%;
+}
+//投稿内容
+.post_index_content_box {
+	background: #fff;
+	border-radius: 5%;
+	padding: 2%;
+}
+//投稿画像
+.post_image {
+	width: 100%;
+    height: 315px;
+    margin-bottom: 22px;
+}
+//投稿タイトル
+.post_title {
+	color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 13px;
+    word-break: break-word;
+}
+//投稿内容コメント
+.post_body {
+	word-break: break-word;
+	color: black;
+}
+//投稿ユーザー
+.post_user {
+	margin-top: 10px;
+}
+//ユーザー名前
+.post_user_name {
+	color: black;
+	margin-left: 8px;
+}
+//ユーザー画像
+.rounded-circle {
+	border: 1px solid #c0c0c0;
+}
+//投稿日
+.post_create {
+	color: #c0c0c0;
+}
+//カテゴリー
+.post_index_category {
+	width: 30%;
+	min-width: 14%;
+}
+//新着カテゴリーの文字
+.post_index_category_title {
+	font-size: 17px;
+    font-weight: bold;
+}
+.post_index_category_more {
+	color: #c0c0c0;
+}
+//カテゴリーの文字
+.post_index_category_name {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -38,16 +38,50 @@ ol {
 li {
   list-style: none;
 }
+.row {
+	margin: 50px 0px;
+}
+//ヘッダー下線
+.navbar-inverse {
+	border-bottom: 1px solid #c0c0c0;
+	height: 119px;
+}
 //ヘッダータイトル
 .head_title {
-	padding: 1% 1%;
+	width: 13%;
+    position: absolute;
+    top: 6%;
 }
 //ヘッダーナブ全体
 .head_nav {
-	display: flex;
-	margin-left: 70%;
+    display: flex;
+    position: absolute;
+    right: 24%;
+    top: 5%;
 }
 //ヘッダーナブリスト
 .head_nav_list {
 	margin-right: 5%;
+    width: 100px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
