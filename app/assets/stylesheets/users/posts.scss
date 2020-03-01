@@ -84,6 +84,77 @@ input[type="text"] {
     height: 100px;
 }
 
+//投稿詳細(uesrs/posts/show.html.erb)-----------------------------------------------------------------
+//投稿詳細全体
+.post_show {
+	background: #fff;
+	padding: 2%;
+}
+//投稿画像
+.post_show_image {
+	width: 100%;
+    height: 400px;
+    margin-bottom: 50px;
+}
+//投稿タイトル
+.post_show_title {
+	color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+//投稿内容コメント
+.post_show_body {
+	word-break: break-word;
+	color: black;
+}
+//投稿ユーザー
+.post_show_user {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+//投稿日
+.post_show_create {
+	color: #c0c0c0;
+	margin-bottom: 30px;
+}
+//カテゴリー内容
+.post_show_category {
+	display: flex;
+	margin-top: 56px;
+}
+//カテゴリー1つ1つ
+.post_show_category_name {
+	border: 1px solid #c0c0c0;
+    border-radius: 11%;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 19px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
