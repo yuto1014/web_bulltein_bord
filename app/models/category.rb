@@ -1,8 +1,8 @@
 class Category < ApplicationRecord
 
-	has_many :posts
+	has_many :category_posts
+  	has_many :posts, through: :category_posts
 
 	validates :name, presence: true
-	accepts_nested_attributes_for :posts, allow_destroy: true
 
 end

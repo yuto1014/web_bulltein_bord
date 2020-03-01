@@ -13,7 +13,8 @@
 								<%= truncate(post.title, length: 30) %>
 							</div>
 							<div class="post_body">
-								<%= truncate(post.body, length: 150) %>
+								<!--%= truncate(post.body, length: 150) %-->
+								<%= simple_format(truncate(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
 							</div>
 							<div class="post_user">
 								<%= link_to users_user_path(post.user) do %>

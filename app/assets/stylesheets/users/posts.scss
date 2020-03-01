@@ -17,6 +17,7 @@
 	background: #fff;
 	border-radius: 5%;
 	padding: 2%;
+	margin-bottom: 40px;
 }
 //投稿画像
 .post_image {
@@ -72,7 +73,16 @@
 	color: black;
 }
 
-
+//新規投稿(uesrs/posts/new.html.erb)-----------------------------------------------------------------
+//投稿フォーム全体
+.post_new {
+	background: #fff;
+	padding: 20px;
+}
+//タイトルフォーム
+input[type="text"] {
+    height: 100px;
+}
 
 
 
