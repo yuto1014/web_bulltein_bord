@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <header class="navbar-inverse">
+      <nav class="navbar-nav">
+          <span class="head_title">サンプル掲示板</span>
+      </nav>
+      <nav>
+        <ul class="head_nav text-right" >
+          <% if user_signed_in? %>
+            <li class="head_nav_list">
+                  <%= link_to "マイページ", users_user_path(current_user.id) %>
+            </li>
+            <li class="head_nav_list">
+                  <%= link_to "投稿一覧", users_posts_path %>
+            </li>
+            <li class="head_nav_list">
+                  <%= link_to "ログアウト", destroy_user_session_path %>
+            </li>
+            <li class="head_nav_list">
+                  <%= link_to "新規投稿", new_users_category_path, class: "btn btn-outline-success" %>
+            </li>
+          <% else %>
+            <li class="head_nav_list">
+                  <%= link_to "投稿一覧", users_posts_path %>
+            </li>
+            <li class="head_nav_list">
+                  <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <li class="head_nav_list">
+                  <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
+    <footer class="navbar-dark bg-dark">
+      <h3 class="text-center">© All rights reserved by サンプル掲示板</h3>
+    </footer>
   </body>
 </html>
