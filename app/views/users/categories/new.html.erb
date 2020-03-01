@@ -1,0 +1,28 @@
+<section class="container">
+	<div class="row">
+		<div class="col-6 offset-3">
+			<h3 class="text-center">新規投稿</h3>
+				<% if @category.errors.any? %>
+	            	<div id="error_explanation">
+	            		<h2><%= @category.errors.count %>件のエラーが発生しました。</h2>
+	            		<ul>
+	                 		<% @category.errors.full_messages.each do |message| %>
+	                    		<li><%= message %></li>
+	                  		<% end %>
+	                	</ul>
+	            	</div>
+	            <% end %>
+				<%= form_for(@category, url: users_categories_path, remote: true) do |f| %>
+					<div class="col-12">
+						<%= f.fields_for :posts do |post| %>
+								<%= render 'post_fields', f: post %>
+						<% end %>
+					</div>
+					<div class="col-12">
+						<%= f.text_field :name, class:"form-control", placeholder: "カテゴリー" %>
+					</div>
+					<%= f.submit "投稿する", class:"form-control" %>
+				<% end %>
+		</div>
+	</div>
+</section>

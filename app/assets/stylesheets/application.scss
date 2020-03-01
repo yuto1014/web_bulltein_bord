@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+body {
+	background-color: #f5f5f5;
+}
+ol {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+//ヘッダータイトル
+.head_title {
+	padding: 1% 1%;
+}
+//ヘッダーナブ全体
+.head_nav {
+	display: flex;
+	margin-left: 70%;
+}
+//ヘッダーナブリスト
+.head_nav_list {
+	margin-right: 5%;
+}
