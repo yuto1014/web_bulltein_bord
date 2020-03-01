@@ -1,0 +1,62 @@
+<%= comments.count %>件のコメント
+	<% comments.each do |comment| %>
+		<% unless comment.id.nil? %>
+			<% if comment.reply.nil? %>
+			  	<li class="comment-container">
+					<div class="comment-box">
+						<div class="comment-avatar">
+							<%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>
+						</div>
+						<div class="comment-text">
+						    <p><%= link_to "#{comment.user.name}", users_user_path(comment.user.id) %></p>
+						    <div class="comment-entry">
+			  				    <%= comment.content %>
+			  				    <% if comment.user == current_user %>
+						      		<%= link_to users_post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+						      			<i class="fas fa-trash" style="color: black;"></i>
+						      		<% end %>
+						    	<% end %>
+			  				</div>
+							<span class="comment-date pull-right">
+							      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+							</span>
+						</div>
+					</div>
+				</li>
+				<div class="reply">
+				    返信
+				</div>
+				<%= form_with(model: [@post, @comment], url: users_post_comments_path(@post) ) do |f| %>
+		       		<%= f.text_area :content, class: "form-control" %>
+		       		<%= f.hidden_field :reply, :value => comment.id  %>
+		       		<%= f.submit "返信" %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<% @comment_replies = Comment.where(reply: comment.id) %>
+		<% if @comment_replies.exists? %>
+			<% @comment_replies.each do |reply| %>
+				<li class="comment-container">
+					<div class="comment-box_reply">
+						<div class="comment-avatar">
+		 					<%= attachment_image_tag reply.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>
+		 				</div>
+		 				<div class="comment-text">
+						 	<%= link_to "#{reply.user.name}", users_user_path(reply.user.id) %>
+						 	<div class="comment-entry">
+						 		<%= reply.content %>
+						 		<% if reply.user == current_user %>
+					      			<%= link_to users_post_comment_path(reply.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+					      				<i class="fas fa-trash" style="color: black;"></i>
+					      			<% end %>
+				    			<% end %>
+				    		</div>
+				    	</div>
+				    	<span class="comment-date pull-right">
+	      					<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+						</span>
+					</div>
+				</li>
+    		<% end %>
+		<% end %>
+	<% end %>
