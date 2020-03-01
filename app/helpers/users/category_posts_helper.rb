@@ -1,0 +1,2 @@
+module Users::CategoryPostsHelper
+end

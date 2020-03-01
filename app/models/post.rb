@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
-	belongs_to :category
+	has_many :category_posts
+  	has_many :categories, through: :category_posts
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 	#refile
