@@ -32,6 +32,9 @@
                 <li class="head_nav_list">
                       <%= link_to "投稿", new_users_post_path, class: "btn btn-outline-success" %>
                 </li>
+                <div class="search">
+                      <%= render 'users/posts/search_form' %>
+                </div>
               <% else %>
                 <li class="head_nav_list">
                       <%= link_to "投稿一覧", users_posts_path %>
@@ -42,6 +45,9 @@
                 <li class="head_nav_list">
                       <%= link_to "新規登録", new_user_registration_path %>
                 </li>
+                <div class="search">
+                      <%= render 'users/posts/search_form' %>
+                </div>
               <% end %>
             </ul>
           </nav>

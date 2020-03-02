@@ -80,7 +80,7 @@
 	padding: 20px;
 }
 //タイトルフォーム
-input[type="text"] {
+.post_new_title_form > input[type="text"] {
     height: 100px;
 }
 
@@ -203,10 +203,15 @@ input[type="text"] {
 .comment-submit {
 	margin: 15px;
 }
-//----------------------------------------------------------------------------------------------
-
-
-
+//検索結果(users/posts/search.html.erb)---------------------------------------------
+//検索結果フォームの内容
+.search_title {
+	margin-bottom: 50px;
+}
+//検索結果(users/posts/_search_form.html.erb)---------------------------------------------
+#search_form {
+	height: 50px;
+}
 
 
 

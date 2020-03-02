@@ -21,15 +21,36 @@ class Users::PostsController < ApplicationController
   end
 
   def index
-  	@posts = Post.order(created_at: :desc)
-  	@categories = Category.order(created_at: :desc).limit(8)
+  	   @posts = Post.order(created_at: :desc)
+  	   @categories = Category.order(created_at: :desc).limit(20)
   end
 
   def show
-  	@post = Post.find(params[:id])
-  	@comment = Comment.new
-    @comments = @post.comments
+  	   @post = Post.find(params[:id])
+  	   @comment = Comment.new
+       @comments = @post.comments
   end
+
+   def search
+       @posts = Post.where('title LIKE(?)', "%#{params[:search]}%").order(created_at: :desc)
+       @comments = Comment.where('content LIKE(?)', "%#{params[:search]}%").order(created_at: :desc)
+       x = []
+       @posts.each do |post|
+          x << post.id
+       end
+       y = []
+       @comments.each do |comment|
+          y << comment.post.id
+       end
+       z = x << y
+       search_posts = []
+       z.uniq.map do |search_post|
+          search_posts << search_post
+       end
+       @search_posts = Post.where(id: search_posts)
+       @search_result = "#{params[:search]}"
+       @categories = Category.order(created_at: :desc).limit(20)
+    end
 
   private
 
