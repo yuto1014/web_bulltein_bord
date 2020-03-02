@@ -73,6 +73,11 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.1.1'
 gem 'nested_form_fields'
 
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
 
 
 
