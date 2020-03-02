@@ -1,3 +1,4 @@
 //コメント投稿時差し替え内容
-$("#comments_area").html("<%= j(render 'users/comments/index', { comments: @comment.post.comments }) %>")
+$("#comments_area").html("<%= j(render 'users/comments/index', { comments: @comment.post.comments, comment_new: @comment_new, post: @post }) %>")
+// $(".comment-create").html("<%= j(render 'users/comments/form', { comment: @comment_new, post: @post }) %>")
 $("textarea").val('')

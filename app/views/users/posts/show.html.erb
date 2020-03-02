@@ -34,7 +34,7 @@
 			            <h5 class="text-left">コメント</h5>
 			        </li>
 			        <div id="comments_area">
-			            <%= render partial: 'users/comments/index', locals: { comments: @comments } %>
+			            <%= render partial: 'users/comments/index', locals: { comments: @comments, comment_new: @comment, post: @post } %>
 			        </div>
 			    </ul>
 			    <hr>
