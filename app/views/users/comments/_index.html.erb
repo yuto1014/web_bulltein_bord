@@ -1,0 +1,38 @@
+<%= comments.count %>件のコメント
+	<% comments.each do |comment| %>
+		<% unless comment.id.nil? %>
+			  	<li class="comment-container">
+					<div class="comment-box">
+						<div class="comment-avatar">
+							<%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>
+						</div>
+						<div class="comment-text">
+						    <p><%= link_to "#{comment.user.name}", users_user_path(comment.user.id) %></p>
+						    <div class="comment-entry">
+						    	<% unless comment.reply.nil? %>
+						    	<% comment.id = comment.reply %>
+						    		<%= comment.user.name %>
+						    	<% end %>
+			  				    <%= comment.content %>
+			  				    <% if comment.user == current_user %>
+						      		<%= link_to users_post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+						      			<i class="fas fa-trash" style="color: black;"></i>
+						      		<% end %>
+						    	<% end %>
+			  				</div>
+							<span class="comment-date pull-right">
+							      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+							</span>
+						</div>
+					</div>
+				</li>
+				<div class="reply">
+				    返信
+				</div>
+				<%= form_with(model: [@post, @comment], url: users_post_comments_path(@post) ) do |f| %>
+		       		<%= f.text_area :content, class: "form-control" %>
+		       		<%= f.hidden_field :reply, :value => comment.id  %>
+		       		<%= f.submit "返信" %>
+				<% end %>
+			<% end %>
+	<% end %>

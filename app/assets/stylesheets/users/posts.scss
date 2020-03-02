@@ -132,6 +132,64 @@ input[type="text"] {
     padding: 5px;
     font-size: 19px;
 }
+//コメントの文字
+.comment-create {
+  margin-bottom: 15px;
+}
+//コメント内容(users/comments/_index.html.erb)----------------------------------------------
+.comment-container {
+	margin-bottom: 10px;
+}
+//コメント内容全体
+.comment-box {
+  padding-left: 65px;
+  border: solid 1px #C0C0C0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+//コメント投稿者ユーザー画像の枠
+.comment-avatar {
+  position: absolute;
+  left: 22px;
+}
+//コメント投稿者のユーザー画像
+.comment-image {
+  border-radius: 50%;
+}
+//コメント内容
+.comment-text {
+  margin-left: 10px;
+  margin-top: 5px;
+  word-break: break-word;
+}
+//コメント投稿日時
+.comment-date {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	color: #C0C0C0;
+}
+//コメント削除ボタン
+.comment_destroy {
+  margin-left: 20px;
+}
+//コメント返信
+.comment-box_reply {
+  padding-left: 65px;
+  border: solid 1px #C0C0C0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  margin-left: 50px;
+}
+//-------------------------------------------------------------------------------------------
+//コメント入力フォーム(users/comments/_form.html.erb)---------------------------------------------
+//コメント送信ボタン
+.comment-submit {
+	margin: 15px;
+}
+//----------------------------------------------------------------------------------------------
 
 
 

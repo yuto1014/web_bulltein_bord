@@ -27,6 +27,24 @@
 	          		<% end %>
         		<% end %>
 			</div>
+			<hr>
+			<div class="post_show_comment">
+			    <ul>
+			        <li class="comment-create">
+			            <h5 class="text-left">コメント</h5>
+			        </li>
+			        <div id="comments_area">
+			            <%= render partial: 'users/comments/index', locals: { comments: @comments } %>
+			        </div>
+			    </ul>
+			    <hr>
+			    <% if user_signed_in? %>
+			        <div class="comment-create">
+			            <h5 class="text-left">コメントを投稿する</h5>
+			            <%= render partial: 'users/comments/form', locals: { comment: @comment, post: @post } %>
+			        </div>
+			    <% end %>
+			</div>
 		</div>
 	</div>
 </section>
