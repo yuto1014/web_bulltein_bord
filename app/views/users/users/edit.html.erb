@@ -1,0 +1,33 @@
+<!-- マイページ ------------------------->
+<section class="container" id="use_info_edit">
+	<div class="row">
+		<div class="col-6 offset-3 post_new">
+			<%= flash[:notice] %>
+			<h3 class="text-center">プロフィール</h3>
+			<hr>
+				<% if @user.errors.any? %>
+	            	<div id="error_explanation">
+	            		<h2><%= @user.errors.count %>件のエラーが発生しました。</h2>
+	            		<ul>
+	                 		<% @user.errors.full_messages.each do |message| %>
+	                    		<li><%= message %></li>
+	                  		<% end %>
+	                	</ul>
+	            	</div>
+	            <% end %>
+				<%= form_for(@user, url: users_user_path(@user), remote: true) do |f| %>
+					<p class="btn btn-dark">プロフィール画像</p><br>
+					<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "100x100" %>
+				    <%= f.attachment_field :profile_image %>
+				    <hr>
+					<p class="btn btn-dark">名前</p><br>
+					<%= f.text_field :name, class:"form-control" %>
+					<hr>
+					<p class="btn btn-dark">メールアドレス</p><br>
+					<%= f.text_field :email, class:"form-control" %>
+					<hr>
+					<%= f.submit "保存", class:"form-control btn btn-danger" %>
+				<% end %>
+		</div>
+	</div>
+</section>

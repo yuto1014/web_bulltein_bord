@@ -1,16 +1,12 @@
 class Users::CommentsController < ApplicationController
 
-	def create
+	  def create
       @post = Post.find(params[:post_id])
       #投稿に紐づいたコメントを作成
       @comment = @post.comments.build(comment_params)
       @comment.user_id = current_user.id
-      comments  = @comment.content.scan(/>>[\d+]+/)
-      comments.uniq.map do |comment|
-        comment = Comment.find_or_create_by(content: comment.downcase.delete('>>'))
-        comment.save
-      end
       if @comment.save
+        @comment_new = Comment.new
       	render :index
       end
     end
@@ -18,6 +14,8 @@ class Users::CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       if @comment.destroy
+        @post = Post.find(params[:post_id])
+        @comment_new = Comment.new
       	render :index
       end
     end
