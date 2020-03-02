@@ -59,12 +59,56 @@ li {
     right: 24%;
     top: 5%;
 }
+//ヘッダー「サンプル掲示板」
+.btn-sticky {
+  display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #f7f7f7;
+    border-left: solid 6px #ff7c5c;
+    color: #ff7c5c;
+    font-weight: bold;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    margin-top: 3%;
+    width: 14%;
+}
+.btn-sticky:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
 //ヘッダーナブリスト
 .head_nav_list {
-	margin-right: 4%;
     width: 119px;
 }
-
+//ヘッダー「マイページ」
+.head_nav_list_mypage {
+	margin-right: 20px;
+}
+//ヘッダー「投稿一覧」
+.head_nav_list_post_index {
+	margin-right: 20px;
+}
+//ヘッダー「ログアウト」
+.head_nav_list_logout {
+	margin-right: 20px;
+}
+//ヘッダー「投稿」
+.head_nav_list_new_post {
+	margin-right: 20px;
+}
+//ヘッダー「新規登録」
+.head_nav_list_signup {
+	width: 119px;
+	margin-right: 20px;
+}
+//フッター
+footer {
+	height: 200px;
+    color: white;
+}
+footer > h3 {
+	line-height: 200px;
+}
 
 
 
