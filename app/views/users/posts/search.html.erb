@@ -1,9 +1,10 @@
-<!-- 投稿一覧 ------------------------->
+<!-- 検索結果一覧 ------------------------->
 <section class="container">
 	<div class="row">
+		<h2 class="search_title">"<%= @search_result %>"の検索結果(<%= @search_posts.count %>件)</h2>
 		<div class="col-10 offset-1 post_index">
 			<div class="post_index_content">
-				<% @posts.each do |post| %>
+				<% @search_posts.each do |post| %>
 					<%= link_to users_post_path(post) do %>
 						<div class="post_index_content_box">
 							<div class="post_image">

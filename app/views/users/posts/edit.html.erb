@@ -14,9 +14,10 @@
 	                	</ul>
 	            	</div>
 	            <% end %>
-				<%= form_for(@post, url: users_posts_path, remote: true) do |f| %>
+				<%= form_for(@post, url: users_post_path) do |f| %>
 					<div class="col-12">
 						<p class="btn btn-dark">画像</p><br>
+						<%= attachment_image_tag @post, :image, class: "post_show_image" %>
 						<%= f.attachment_field :image %>
 						<hr>
 						<div class="post_new_title_form">
@@ -36,7 +37,7 @@
 						</div>
 						<%= f.hidden_field :user_id, :value => current_user.id %>
 					</div>
-					<%= f.submit "投稿する", class:"form-control btn btn-danger" %>
+					<%= f.submit "更新する", class:"form-control btn btn-danger" %>
 				<% end %>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
-<!-- 投稿一覧 ------------------------->
+<!-- 検索結果一覧 ------------------------->
 <section class="container">
 	<div class="row">
+		<h2 class="search_title">カテゴリー"<%= @category.name %>"</h2>
 		<div class="col-10 offset-1 post_index">
 			<div class="post_index_content">
 				<% @posts.each do |post| %>
@@ -13,6 +14,7 @@
 								<%= truncate(post.title, length: 30) %>
 							</div>
 							<div class="post_body">
+								<!--%= truncate(post.body, length: 150) %-->
 								<%= simple_format(truncate(post.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
 							</div>
 							<div class="post_user">

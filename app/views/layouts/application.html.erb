@@ -15,33 +15,39 @@
     <header class="navbar-inverse">
       <div class="container">
           <nav class="navbar-nav">
-              <span class="head_title">サンプル掲示板</span>
+              <a href="/users/posts" class="btn-sticky">サンプル掲示板</a>
           </nav>
           <nav>
             <ul class="head_nav text-right" >
               <% if user_signed_in? %>
-                <li class="head_nav_list">
-                      <%= link_to "マイページ", edit_users_user_path(current_user.id) %>
+                <li class="head_nav_list_mypage">
+                      <%= link_to "マイページ", edit_users_user_path(current_user.id), class: "btn btn-secondary" %>
                 </li>
-                <li class="head_nav_list">
-                      <%= link_to "投稿一覧", users_posts_path %>
+                <li class="head_nav_list_post_index">
+                      <%= link_to "投稿一覧", users_posts_path, class: "btn btn-secondary" %>
                 </li>
-                <li class="head_nav_list">
-                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <li class="head_nav_list_logout">
+                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
                 </li>
-                <li class="head_nav_list">
-                      <%= link_to "投稿", new_users_post_path, class: "btn btn-outline-success" %>
+                <li class="head_nav_list_new_post">
+                      <%= link_to "投稿", new_users_post_path, class: "btn btn-success" %>
                 </li>
+                <div class="search">
+                      <%= render 'users/posts/search_form' %>
+                </div>
               <% else %>
                 <li class="head_nav_list">
-                      <%= link_to "投稿一覧", users_posts_path %>
+                      <%= link_to "投稿一覧", users_posts_path, class: "btn btn-secondary" %>
                 </li>
                 <li class="head_nav_list">
-                      <%= link_to "ログイン", new_user_session_path %>
+                      <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
                 </li>
-                <li class="head_nav_list">
-                      <%= link_to "新規登録", new_user_registration_path %>
+                <li class="head_nav_list_signup">
+                      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
                 </li>
+                <div class="search">
+                      <%= render 'users/posts/search_form' %>
+                </div>
               <% end %>
             </ul>
           </nav>
