@@ -26,21 +26,23 @@
 						</div>
 					</div>
 				</li>
-				<div class="accordion" id="accordion" aria-multiselectable="true">
-				  <div>
-				        <a class="btn btn-outline-secondary reply_btn" data-toggle="collapse" href=".collapseOne_<%= i %>" role="button" aria-expanded="true" aria-controls="collapseOne">
-				          返信
-				        </a>
-				    <div class="collapseOne_<%= i %> collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-				      <div class="card-body">
-						<%= form_with(model: [post, comment_new], url: users_post_comments_path(post) ) do |f| %>
-					       	<%= f.text_area :content, class: "form-control" %>
-					       	<%= f.hidden_field :reply, :value => comment.user.id  %>
-					       	<%= f.submit "送信", class: "btn btn-secondary reply_btn" %>
-						<% end %>
-					  </div><!-- /.card-body -->
-				    </div><!-- /.collapse -->
-				  </div><!-- /.card -->
-				</div>
+				<% if user_signed_in? %>
+					<div class="accordion" id="accordion" aria-multiselectable="true">
+					  <div>
+					        <a class="btn btn-outline-secondary reply_btn" data-toggle="collapse" href=".collapseOne_<%= i %>" role="button" aria-expanded="true" aria-controls="collapseOne">
+					          返信
+					        </a>
+					    <div class="collapseOne_<%= i %> collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+					      <div class="card-body">
+							<%= form_with(model: [post, comment_new], url: users_post_comments_path(post) ) do |f| %>
+						       	<%= f.text_area :content, class: "form-control" %>
+						       	<%= f.hidden_field :reply, :value => comment.user.id  %>
+						       	<%= f.submit "送信", class: "btn btn-secondary reply_btn" %>
+							<% end %>
+						  </div><!-- /.card-body -->
+					    </div><!-- /.collapse -->
+					  </div><!-- /.card -->
+					</div>
+				<% end %>
 			<% end %>
 	<% end %>

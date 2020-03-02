@@ -1,24 +1,45 @@
-# README
+# サンプル掲示板について
+## URL
+[http://18.177.198.159/](http://18.177.198.159/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## コンセプト
+### ✔︎日々の記録を投稿する
 
-* Ruby version
 
-* System dependencies
+## 開発環境
 
-* Configuration
+* 言語：　ruby 2.5.7
+* フレームワーク:　rails 5.2.4
+* バージョン管理:　github
+* DB:　mysql2、sqlite3
+* インフラ:　AWS
 
-* Database creation
+## 実装した機能
+###  ✔︎ ユーザー機能
+* ユーザー登録機能(devise)
+* ログイン機能(devise)
+* ユーザー情報編集機能
+* 投稿機能
+* レス機能
+* レス返信機能
+* カテゴリ設定(1つのスレッドに複数付与可)
+* 検索機能(スレッドタイトル、コメント、カテゴリーの横断検索)
 
-* Database initialization
 
-* How to run the test suite
+### ✔︎その他機能
 
-* Services (job queues, cache servers, search engines, etc.)
+* レスポンシブ対応
 
-* Deployment instructions
 
-* ...
+
+
+
+
+
+
+
+
+
+
+
