@@ -64,9 +64,7 @@
 .post_index_category_title {
 	font-size: 17px;
     font-weight: bold;
-}
-.post_index_category_more {
-	color: #c0c0c0;
+    margin-bottom: 30px;
 }
 //カテゴリーの文字
 .post_index_category_name {
@@ -108,6 +106,14 @@
 .post_show_body {
 	word-break: break-word;
 	color: black;
+}
+//投稿編集
+.post_show_edit {
+	margin-bottom: 5px;
+}
+//投稿削除
+.post_show_destroy {
+	margin-bottom: 45px;
 }
 //投稿ユーザー
 .post_show_user {
@@ -209,8 +215,14 @@
 	margin-bottom: 50px;
 }
 //検索結果(users/posts/_search_form.html.erb)---------------------------------------------
-#search_form {
-	height: 50px;
+.search > input[type="text"] #search_area .form-control {
+	width: 268px;
+}
+.fa-search {
+	position: absolute;
+    top: 14%;
+    right: 3%;
+    font-size: 23px;
 }
 
 

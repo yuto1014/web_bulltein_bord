@@ -22,7 +22,14 @@ class Users::PostsController < ApplicationController
 
   def index
   	   @posts = Post.order(created_at: :desc)
-  	   @categories = Category.order(created_at: :desc).limit(20)
+  	   @categories_all = Category.all
+       not0 = []
+       @categories_all.each do  |category|
+        if category.posts.count > 0
+          not0 << category.id
+        end
+      end
+      @categories = Category.where(id: not0).order(created_at: :desc).limit(20)
   end
 
   def show
@@ -31,26 +38,68 @@ class Users::PostsController < ApplicationController
        @comments = @post.comments
   end
 
-   def search
-       @posts = Post.where('title LIKE(?)', "%#{params[:search]}%").order(created_at: :desc)
-       @comments = Comment.where('content LIKE(?)', "%#{params[:search]}%").order(created_at: :desc)
-       x = []
+  def search
+       @posts = Post.where('title LIKE(?)', "%#{params[:search]}%")
+       post_search = []
        @posts.each do |post|
-          x << post.id
+          post_search << post.id
        end
-       y = []
+       @comments = Comment.where('content LIKE(?)', "%#{params[:search]}%")
+       comment_search = []
        @comments.each do |comment|
-          y << comment.post.id
+          comment_search << comment.post.id
        end
-       z = x << y
+       @search_categories = Category.where('name LIKE(?)', "%#{params[:search]}%")
+       category_search_all = []
+       @search_categories.each do |search_category|
+        category_search_all << search_category.id
+       end
+       category_search_posts = CategoryPost.where(category_id: category_search_all)
+       category_search_select = []
+       category_search_posts.each do |category_search_post|
+          category_search_select << category_search_post.post_id
+       end
+       category_search = Post.where(id: category_search_select)
+       q = post_search + comment_search + category_search
        search_posts = []
-       z.uniq.map do |search_post|
+       q.uniq.map do |search_post|
           search_posts << search_post
        end
-       @search_posts = Post.where(id: search_posts)
+       @search_posts = Post.where(id: search_posts).order(created_at: :desc)
        @search_result = "#{params[:search]}"
-       @categories = Category.order(created_at: :desc).limit(20)
-    end
+       @categories_all = Category.all
+       not0 = []
+       @categories_all.each do  |category|
+        if category.posts.count > 0
+          not0 << category.id
+        end
+      end
+      @categories = Category.where(id: not0).order(created_at: :desc).limit(20)
+  end
+
+  def destroy
+      post = Post.find(params[:id])
+      post.destroy
+      redirect_to users_posts_path
+  end
+
+  def category
+      @category = Category.find(params[:id])
+      @category_posts = CategoryPost.where(category_id: @category.id)
+      posts = []
+      @category_posts.each do |category_posts|
+        posts << category_posts.post_id
+      end
+      @posts = Post.where(id: posts)
+      @categories_all = Category.all
+       not0 = []
+       @categories_all.each do  |category|
+        if category.posts.count > 0
+          not0 << category.id
+        end
+      end
+      @categories = Category.where(id: not0).order(created_at: :desc).limit(20)
+  end
 
   private
 

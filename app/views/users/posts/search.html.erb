@@ -1,7 +1,7 @@
 <!-- 検索結果一覧 ------------------------->
 <section class="container">
 	<div class="row">
-		<h2 class="search_title"><%= @search_result %>"の検索結果(<%= @search_posts.count %>件)</h2>
+		<h2 class="search_title">"<%= @search_result %>"の検索結果(<%= @search_posts.count %>件)</h2>
 		<div class="col-10 offset-1 post_index">
 			<div class="post_index_content">
 				<% @search_posts.each do |post| %>
@@ -14,8 +14,7 @@
 								<%= truncate(post.title, length: 30) %>
 							</div>
 							<div class="post_body">
-								<!--%= truncate(post.body, length: 150) %-->
-								<%= simple_format(truncate(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
+								<%= simple_format(truncate(post.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
 							</div>
 							<div class="post_user">
 								<%= link_to users_user_path(post.user) do %>
@@ -32,13 +31,13 @@
 			</div>
 			<div class="post_index_category">
 				<h4 class="post_index_category_title">新着カテゴリー</h4>
-				<h6 class="post_index_category_more">もっと見る</h6>
 					<% @categories.each do |category| %>
 						<%= link_to "/users/category/#{category.id}" do %>
 							<span class="post_index_category_name"><%= category.name %>(<%= category.posts.count %>)</span>
 						<% end %>
+						<br>
+						<hr>
 					<% end %>
-					<hr>
 			</div>
 	</div>
 	</div>

@@ -1,4 +1,4 @@
 <%= form_tag(users_search_path, :method => 'get') do %>
-    <%= text_field_tag :search, params[:search], class: "form-control", id: "search_area", placeholder: "タイトルを入力"%>
-    <%= submit_tag '検索' %>
+    <%= text_field_tag :search, params[:search], class: "form-control", id: "search_area", placeholder: "気になるキーワードを入力", size: "40x40" %>
+    <button type="submit" id="sbtn_submit"><i class="fas fa-search"></i></button>
 <% end %>
