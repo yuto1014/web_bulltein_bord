@@ -1,0 +1,56 @@
+<!-- マイページ ------------------------->
+<section class="container" id="use_info_edit">
+	<div class="row">
+		<div class="col-6 offset-3 post_new">
+			<h3 class="text-center" style="margin: 50px 0px;">プロフィール</h3>
+			<hr>
+				<% if @user.errors.any? %>
+	            	<div id="error_explanation">
+	            		<h2><%= @user.errors.count %>件のエラーが発生しました。</h2>
+	            		<ul>
+	                 		<% @user.errors.full_messages.each do |message| %>
+	                    		<li><%= message %></li>
+	                  		<% end %>
+	                	</ul>
+	            	</div>
+	            <% end %>
+				<%= form_for(@user, url: users_user_path(@user), remote: true) do |f| %>
+					<p class="btn btn-dark">プロフィール画像</p><br>
+					<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "100x100" %>
+				    <%= f.attachment_field :profile_image %>
+				    <hr>
+					<p class="btn btn-dark">名前</p><br>
+					<%= f.text_field :name, class:"form-control" %>
+					<hr>
+					<p class="btn btn-dark">メールアドレス</p><br>
+					<%= f.text_field :email, class:"form-control" %>
+					<hr>
+					<%= f.submit "保存", class:"form-control btn btn-danger" %>
+				<% end %>
+				<hr>
+				<h3 class="text-center" style="margin: 50px 0px;">あなたの投稿</h3>
+				<% @posts.each do |post| %>
+					<%= link_to users_post_path(post) do %>
+						<div class="post_index_content_box">
+							<div class="post_image">
+									<%= attachment_image_tag post, :image, class: "post_image" %>
+							</div>
+							<div class="post_title">
+								<%= truncate(post.title, length: 30) %>
+							</div>
+							<div class="post_body">
+								<%= simple_format(truncate(post.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
+							</div>
+							<div class="post_user">
+								<%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"rounded-circle", size: "30x30" %>
+								<span class="post_user_name"><%= post.user.name %></span>
+							</div>
+							<div class="post_create text-right">
+								<%= post.created_at.strftime("%Y年%m月%d日") %>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+		</div>
+	</div>
+</section>

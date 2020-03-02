@@ -1,0 +1,255 @@
+// Place all the styles related to the users::posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//投稿一覧(uesrs/posts/index.html.erb)-----------------------------------------------------------------
+//投稿全体
+.post_index {
+	display: flex;
+}
+//投稿
+.post_index_content {
+	max-width: 100%;
+	margin-right: 15%;
+}
+//投稿内容
+.post_index_content_box {
+	background: #fff;
+	border-radius: 5%;
+	padding: 2%;
+	margin-bottom: 40px;
+}
+//投稿画像
+.post_image {
+	width: 100%;
+    height: 315px;
+    margin-bottom: 22px;
+}
+//投稿タイトル
+.post_title {
+	color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 13px;
+    word-break: break-word;
+}
+//投稿内容コメント
+.post_body {
+	word-break: break-word;
+	color: black;
+}
+//投稿ユーザー
+.post_user {
+	margin-top: 10px;
+}
+//ユーザー名前
+.post_user_name {
+	color: black;
+	margin-left: 8px;
+}
+//ユーザー画像
+.rounded-circle {
+	border: 1px solid #c0c0c0;
+}
+//投稿日
+.post_create {
+	color: #c0c0c0;
+}
+//カテゴリー
+.post_index_category {
+	width: 30%;
+	min-width: 14%;
+}
+//新着カテゴリーの文字
+.post_index_category_title {
+	font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+//カテゴリーの文字
+.post_index_category_name {
+	color: black;
+}
+
+//新規投稿(uesrs/posts/new.html.erb)-----------------------------------------------------------------
+//投稿フォーム全体
+.post_new {
+	background: #fff;
+	padding: 20px;
+}
+//タイトルフォーム
+.post_new_title_form > input[type="text"] {
+    height: 100px;
+}
+
+//投稿詳細(uesrs/posts/show.html.erb)-----------------------------------------------------------------
+//投稿詳細全体
+.post_show {
+	background: #fff;
+	padding: 2%;
+}
+//投稿画像
+.post_show_image {
+	width: 100%;
+    height: 400px;
+    margin-bottom: 50px;
+}
+//投稿タイトル
+.post_show_title {
+	color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+//投稿内容コメント
+.post_show_body {
+	word-break: break-word;
+	color: black;
+}
+//投稿編集
+.post_show_edit {
+	margin-bottom: 5px;
+}
+//投稿削除
+.post_show_destroy {
+	margin-bottom: 45px;
+}
+//投稿ユーザー
+.post_show_user {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+//投稿削除ボタン
+.fa-trash {
+	color: black;
+    position: absolute;
+    right: 2%;
+    top: 12%;
+}
+//投稿日
+.post_show_create {
+	color: #c0c0c0;
+	margin-bottom: 30px;
+}
+//カテゴリー内容
+.post_show_category {
+	display: flex;
+	margin-top: 56px;
+}
+//カテゴリー1つ1つ
+.post_show_category_name {
+	border: 1px solid #c0c0c0;
+    border-radius: 11%;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 19px;
+}
+//コメントの文字
+.comment-create {
+  	margin-bottom: 15px;
+}
+//コメント内容(users/comments/_index.html.erb)----------------------------------------------
+.comment-container {
+	margin-bottom: 10px;
+}
+//コメント内容全体
+.comment-box {
+	padding-left: 65px;
+	border: solid 1px #C0C0C0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: relative;
+}
+//コメント投稿者ユーザー画像の枠
+.comment-avatar {
+    position: absolute;
+    left: 22px;
+}
+//コメント投稿者のユーザー画像
+.comment-image {
+    border-radius: 50%;
+}
+//コメント内容
+.comment-text {
+    margin-left: 10px;
+    margin-top: 5px;
+    word-break: break-word;
+}
+//コメント投稿日時
+.comment-date {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	color: #C0C0C0;
+}
+//コメント削除ボタン
+.comment_destroy {
+    margin-left: 20px;
+}
+//コメント返信
+.comment-box_reply {
+    padding-left: 65px;
+    border: solid 1px #C0C0C0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    margin-left: 50px;
+}
+//返信ボタン
+.reply_btn {
+	width: 9%;
+    margin-bottom: 20px;
+    margin-left: 91%;
+    margin-top: 10px;
+}
+//-------------------------------------------------------------------------------------------
+//コメント入力フォーム(users/comments/_form.html.erb)---------------------------------------------
+//コメント送信ボタン
+.comment-submit {
+	margin: 15px;
+}
+//検索結果(users/posts/search.html.erb)---------------------------------------------
+//検索結果フォームの内容
+.search_title {
+	margin-bottom: 50px;
+}
+//検索結果(users/posts/_search_form.html.erb)---------------------------------------------
+.search > input[type="text"] #search_area .form-control {
+	width: 268px;
+}
+.fa-search {
+	position: absolute;
+    top: 14%;
+    right: 3%;
+    font-size: 23px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

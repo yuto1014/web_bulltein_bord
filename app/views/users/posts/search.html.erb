@@ -1,0 +1,43 @@
+<!-- 検索結果一覧 ------------------------->
+<section class="container">
+	<div class="row">
+		<h2 class="search_title">"<%= @search_result %>"の検索結果(<%= @search_posts.count %>件)</h2>
+		<div class="col-10 offset-1 post_index">
+			<div class="post_index_content">
+				<% @search_posts.each do |post| %>
+					<%= link_to users_post_path(post) do %>
+						<div class="post_index_content_box">
+							<div class="post_image">
+									<%= attachment_image_tag post, :image, class: "post_image" %>
+							</div>
+							<div class="post_title">
+								<%= truncate(post.title, length: 30) %>
+							</div>
+							<div class="post_body">
+								<%= simple_format(truncate(post.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 150)) %>
+							</div>
+							<div class="post_user">
+								<%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"rounded-circle", size: "30x30" %>
+								<span class="post_user_name"><%= post.user.name %></span>
+							</div>
+							<div class="post_create text-right">
+								<%= post.created_at.strftime("%Y年%m月%d日") %>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="post_index_category">
+				<h4 class="post_index_category_title">新着カテゴリー</h4>
+					<% @categories.each do |category| %>
+						<%= link_to "/users/category/#{category.id}" do %>
+							<span class="post_index_category_name"><%= category.name %>(<%= category.posts.count %>)</span>
+						<% end %>
+						<br>
+						<hr>
+					<% end %>
+			</div>
+	</div>
+	</div>
+</section>
+

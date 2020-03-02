@@ -1,0 +1,46 @@
+<%= comments.count %>件のコメント
+	<% comments.each.with_index do |comment, i| %>
+		<% unless comment.id.nil? %>
+			  	<li class="comment-container">
+					<div class="comment-box">
+						<div class="comment-avatar">
+							<%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>
+						</div>
+						<div class="comment-text">
+						    <p><%= comment.user.name %></p>
+						    <div class="comment-entry">
+						    	<% unless comment.reply.nil? %>
+						    		<% user = User.find_by(id: comment.reply) %>
+						    		>><%= user.name %><br>
+						    	<% end %>
+			  				    <%= comment.content %>
+			  				    <% if comment.user == current_user %>
+						      		<%= link_to users_post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+						      			<i class="fas fa-trash text-right"></i>
+						      		<% end %>
+						    	<% end %>
+			  				</div>
+							<span class="comment-date pull-right">
+							      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+							</span>
+						</div>
+					</div>
+				</li>
+				<div class="accordion" id="accordion" aria-multiselectable="true">
+				  <div>
+				        <a class="btn btn-outline-secondary reply_btn" data-toggle="collapse" href=".collapseOne_<%= i %>" role="button" aria-expanded="true" aria-controls="collapseOne">
+				          返信
+				        </a>
+				    <div class="collapseOne_<%= i %> collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+				      <div class="card-body">
+						<%= form_with(model: [post, comment_new], url: users_post_comments_path(post) ) do |f| %>
+					       	<%= f.text_area :content, class: "form-control" %>
+					       	<%= f.hidden_field :reply, :value => comment.user.id  %>
+					       	<%= f.submit "送信", class: "btn btn-secondary reply_btn" %>
+						<% end %>
+					  </div><!-- /.card-body -->
+				    </div><!-- /.collapse -->
+				  </div><!-- /.card -->
+				</div>
+			<% end %>
+	<% end %>

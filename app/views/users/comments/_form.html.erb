@@ -1,0 +1,5 @@
+<!-- コメント入力フォーム(投稿詳細に記載) ------------------------------------------------------------------>
+<%= form_with(model: [post, comment], url: users_post_comments_path(@post) ) do |f| %>
+    <%= f.text_area :content, class: "form-control", id: "search_form", size: "5x5" %>
+    <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
+<% end %>

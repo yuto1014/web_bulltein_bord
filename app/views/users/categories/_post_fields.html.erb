@@ -1,0 +1,21 @@
+<!-- 新規投稿(categoryモデルの子モデルであるpostモデルの保存:cocoon使用) ------------------------------------------------>
+<div class="nested-fields form-inline">
+	<div class="col-12">
+	<p>画像</p>
+	<%= f.attachment_field :image %>
+	<hr>
+	</div>
+	<div class="col-12">
+	<p>タイトル</p>
+	<%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+	<hr>
+	</div>
+	<hr>
+	<div class="col-12">
+	<p>内容</p>
+	<%= f.text_area :body, class: "form-control", placeholder: "内容" %>
+	<hr>
+	</div>
+	<hr>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+</div>
